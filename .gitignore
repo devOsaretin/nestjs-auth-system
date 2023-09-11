@@ -1,8 +1,7 @@
 # compiled output
 /dist
 /node_modules
-/authService/node_modules
-/authService/dist
+
 
 .env
 .env*
