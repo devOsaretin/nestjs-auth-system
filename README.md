@@ -35,9 +35,6 @@ Clone the project
 
 To run this project, you will need to create `.env.development`at the root of this project, add the following environment variables.
 
-`API_KEY`
-
-`ANOTHER_API_KEY`
 
 `POSTGRES_HOST`
 
@@ -49,7 +46,7 @@ To run this project, you will need to create `.env.development`at the root of th
 
 `POSTGRES_PORT`
 
-`POSTGRES_SYNCHRONIZE`
+`POSTGRES_SYNCHRONIZE=true`
 
 `AWS_ACCESS_KEY_ID`
 
@@ -150,9 +147,6 @@ Start the server
 
 To run the tests, you will need to create `.env.test`at the root of this project, add the following environment variables.
 
-`API_KEY`
-
-`ANOTHER_API_KEY`
 
 `POSTGRES_HOST`
 
@@ -163,8 +157,6 @@ To run the tests, you will need to create `.env.test`at the root of this project
 `POSTGRES_DB`
 
 `POSTGRES_PORT`
-
-`POSTGRES_SYNCHRONIZE`
 
 `AWS_ACCESS_KEY_ID`
 
