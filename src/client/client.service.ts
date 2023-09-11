@@ -29,7 +29,7 @@ export class ClientService {
 		if (!id) return null;
 		return await this.clientRepository.findOne({
 			where: {
-				id: 1,
+				id,
 			},
 			relations: ["photos"],
 		});
