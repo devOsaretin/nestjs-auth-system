@@ -1,73 +1,188 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# NestJS Authentication System
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Overview
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project is an authentication system developed using NestJS, PostgreSQL hosted in a Docker container, TypeORM as the ORM, and Passport JWT for authentication. 
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+
+
+## Features
+
+- Client Registration with Image Upload
+- Client Login
+- Authenticated Client Verification
+
+
+## Prerequisites
+
+Before running the project, make sure you have the following prerequisites installed:
+
+- [Node.js](https://nodejs.org/) (16+)
+- [Docker](https://www.docker.com/get-started)
+- [PostgreSQL](https://www.postgresql.org/) (if not using Docker)
+## Getting Started
+
+Clone the project
 
 ```bash
-$ npm install
+  git clone https://github.com/devOsaretin/nestjs-auth-system.git
 ```
 
-## Running the app
+
+## Environment Variables
+
+To run this project, you will need to create `.env.development`at the root of this project, add the following environment variables.
+
+`API_KEY`
+
+`ANOTHER_API_KEY`
+
+`POSTGRES_HOST`
+
+`POSTGRES_USER`
+
+`POSTGRES_PASSWORD`
+
+`POSTGRES_DB`
+
+`POSTGRES_PORT`
+
+`POSTGRES_SYNCHRONIZE`
+
+`AWS_ACCESS_KEY_ID`
+
+`AWS_SECRET_ACCESS_KEY`
+
+`AWS_REGION`
+
+`AWS_BUCKET_NAME`
+
+`SALT_ROUNDS=10`
+
+`JWT_SECRET`
+
+`JWT_EXPIRES=1d`
+
+
+## Run Locally
+
+Clone the project if you have not done so
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+  git clone https://github.com/devOsaretin/nestjs-auth-system.git
 ```
 
-## Test
+Go to the project directory
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+   cd <into the root of the project>
 ```
 
-## Support
+Start the database container
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+  docker-compose up
+```
+Open project in another terminal
 
-## Stay in touch
+```bash
+  cd <into the root of the project>
+```
+Install dependencies
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+  npm install
+```
 
-## License
+Start the server
 
-Nest is [MIT licensed](LICENSE).
+```bash
+  npm run start:dev
+```
+
+
+## API Reference
+
+#### Register 
+
+```http
+  POST /api/register
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `firstName` | `string` | **Required**. |
+| `lastName` | `string` | **Required**. |
+| `email` | `string` | **Required**. |
+| `password` | `string` | **Required**. |
+| `role` | `string` | **Required**. |
+
+
+| `images` | `files` | **Required**. |
+
+#### Login
+
+```http
+  POST /api/login
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `email`      | `string` | **Required**. |
+| `password`      | `string` | **Required**. |
+
+
+#### Authenticated Client
+
+```http
+  GET /api/users/me
+```
+
+`Pass token inside the request header using`
+
+
+
+
+
+## Running Tests
+
+To run the tests, you will need to create `.env.test`at the root of this project, add the following environment variables.
+
+`API_KEY`
+
+`ANOTHER_API_KEY`
+
+`POSTGRES_HOST`
+
+`POSTGRES_USER`
+
+`POSTGRES_PASSWORD`
+
+`POSTGRES_DB`
+
+`POSTGRES_PORT`
+
+`POSTGRES_SYNCHRONIZE`
+
+`AWS_ACCESS_KEY_ID`
+
+`AWS_SECRET_ACCESS_KEY`
+
+`AWS_REGION`
+
+`AWS_BUCKET_NAME`
+
+`SALT_ROUNDS=10`
+
+`JWT_SECRET`
+
+`JWT_EXPIRES=1d`
+
+Run tests
+
+```bash
+  npm run test
+```
+
