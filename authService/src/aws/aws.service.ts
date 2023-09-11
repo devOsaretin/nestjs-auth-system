@@ -19,10 +19,6 @@ export class AwsService {
   constructor(private configService: ConfigService) {}
 
   async upload(fileName: string, file: Buffer) {
-    // return {
-    //   url: `https://test.s3.test.amazonaws.com/test`,
-    //   name: fileName,
-    // };
     const bucketName = this.configService.get('AWS_BUCKET_NAME');
     const region = this.configService.getOrThrow('AWS_REGION');
     const key = `${Date.now()}${fileName}`;
