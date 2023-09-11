@@ -59,7 +59,7 @@ export class AuthService {
 					uploadedS3FilesData.push(s3FileUrl);
 				}
 			} catch (error) {
-				console.log(error);
+				throw new Error(error);
 			}
 		});
 
@@ -84,7 +84,7 @@ export class AuthService {
 				await this.photoRepository.save(photo);
 			}
 		} catch (error) {
-			console.log(error);
+			throw new Error(error);
 		}
 
 		return newClient;
