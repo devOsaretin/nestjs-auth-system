@@ -27,7 +27,12 @@ export class ClientService {
 
 	async findOne(id: number) {
 		if (!id) return null;
-		return await this.clientRepository.findOneBy({ id });
+		return await this.clientRepository.findOne({
+			where: {
+				id: 1,
+			},
+			relations: ["photos"],
+		});
 	}
 
 	async findByEmail(email: string) {
