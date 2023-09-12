@@ -22,6 +22,7 @@ export class AuthController {
 
 	@Post("register")
 	@UseInterceptors(FilesInterceptor("files"), FileUploadInterceptor)
+	@UseInterceptors(ClassSerializerInterceptor)
 	async register(
 		@Body() registerClientDto: RegisterClientDto,
 		@UploadedFiles() files: Array<Express.Multer.File>
